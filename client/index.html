@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple XML-RPC Client</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="w3-container w3-green">
+    <h1>Simple Service Client</h1>
+</header>
+
+<div class="sectionHeading">Ping</div>
+<div class="row">
+    <div class="pod" style="width:100px">Message:</div>
+    <div class="pod" style="width:300px"><input type="text" size="30"></div>
+    <div class="pod" style="width:60px"><button type="button" onclick="processPing()">Go</button></div>
+    <div class="pod" style="width:200px">Result:</div>
+    <div class="pod" id="pingResult"></div>
+</div>
+
+<div class="sectionHeading">Math Operations</div>
+<div class="row">
+    <div class="pod" style="width:100px">Operation:</div>
+    <div class="pod" style="width:240px">
+        <select id="ddOperation" name="ddOperation">
+            <option disabled selected value> -- select an operation -- </option>
+            <option value="volvo">add</option>
+            <option value="saab">subtract</option>
+            <option value="fiat">mulitply</option>
+            <option value="audi">divide</option>
+        </select>
+    </div>
+    <div class="pod" style="width:200px">Array of Numbers:</div>
+    <div class="pod" style="width:200px"><input type="text" width=200px"></div>
+    <div class="pod" style="width:60px"><button type="button" onclick="processMathOperation()">Go</button></div>
+    <div class="pod" style="width:100px">Result:</div>
+    <div class="pod" id="operationResult"></div>
+</div>
+
+<div class="sectionHeading">Repeat</div>
+<div class="row">
+    <div class="pod" style="width:100px">Message:</div>
+    <div class="pod" style="width:200px"><input type="text" width=200px"></div>
+    <div class="pod" style="width:200px">Number of Repetitions:</div>
+    <div class="pod" style="width:50px"><input type="text" size="4"></div>
+    <div class="pod" style="width:60px"><button type="button" onclick="processRepeat()">Go</button></div>
+
+</div>
+<div class="row">
+    <div class="pod" style="width:100px;top:0">Result:</div>
+    <div class="pod" style="width:500px">
+        <textarea  class="resultsSection" id="repeatResult" name="repeatResult" rows="10" cols="30"></textarea>
+    </div>
+</div>
+</body>
+
+<script>
+
+    function formatResult(elm){
+        elm.classList.add('resultsSection')
+    }
+
+    function processMathOperation(){
+        const resultDiv = document.getElementById('operationResult');
+        resultDiv.innerHTML = 'processMathOperation() NOT IMPLEMENTED';
+        formatResult(resultDiv);
+    };
+
+    function processPing(){
+        const resultDiv = document.getElementById('pingResult');
+        resultDiv.innerHTML = 'processPing() NOT IMPLEMENTED';
+        formatResult(resultDiv);
+    };
+
+    function processRepeat(){
+        const resultDiv = document.getElementById('repeatResult');
+        resultDiv.innerHTML = 'processRepeat() NOT IMPLEMENTED';
+    };
+    var callback = function(err, response){
+        document.getElementById('pingOutput').innerHTML = response;
+    };
+
+</script>
+</html>
