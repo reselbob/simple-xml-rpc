@@ -1,8 +1,5 @@
 function MathOp() {
     const getXmlArray = (numbers) => {
-        //const doc = $( "<root />" ); // returns [<br>, "2", <br>]
-        //el = $( "<br>2<br>3 >" ); //
-        //const doc = new DOMParser().parseFromString('<t />')
         const ray = document.createElement('array');
         const data = document.createElement('data');
         ray.appendChild(data);
