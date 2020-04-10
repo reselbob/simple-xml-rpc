@@ -10,7 +10,7 @@ module.exports = {
     subtract: (params, callback) => {client.methodCall('subtract', params, callback)},
     divide: (params, callback) => {client.methodCall('divide', params, callback)},
     multiply: (params, callback) => {client.methodCall('multiply', params, callback)},
-    repeat: (params, callback) => {client.methodCall('repeat', params, callback)},
+    chatter: (params, callback) => {client.methodCall('repeat', params, callback)},
     ping: (params, callback) => {client.methodCall('ping', params, callback)},
     localPing: function(data){
         return data;
