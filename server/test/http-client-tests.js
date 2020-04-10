@@ -13,7 +13,7 @@ const XMLSerializer = require('xmldom').XMLSerializer;
 
 const XML_RPC_SERVER_PORT = process.env.XML_RPC_SERVER_PORT || 9090;
 
-const ARRAY_LENGTH = 40;
+const ARRAY_LENGTH = 3;
 
 const getRandomArray = () =>{
     return Array.from({length: ARRAY_LENGTH}, () => Math.floor(Math.random() * ARRAY_LENGTH));

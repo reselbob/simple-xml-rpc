@@ -29,14 +29,14 @@
     <div class="pod" style="width:240px">
         <select id="ddOperation" name="ddOperation">
             <option disabled selected value> -- select an operation -- </option>
-            <option value="volvo">add</option>
-            <option value="saab">subtract</option>
-            <option value="fiat">mulitply</option>
-            <option value="audi">divide</option>
+            <option value="add">add</option>
+            <option value="substract">subtract</option>
+            <option value="multiply">mulitply</option>
+            <option value="divide">divide</option>
         </select>
     </div>
     <div class="pod" style="width:200px">Array of Numbers:</div>
-    <div class="pod" style="width:200px"><input type="text" width=200px"></div>
+    <div class="pod" style="width:200px"><input id="mathVals" type="text" width=200px"></div>
     <div class="pod" style="width:60px"><button type="button" onclick="processMathOperation()">Go</button></div>
     <div class="pod" style="width:100px">Result:</div>
     <div class="pod" id="operationResult"></div>
@@ -59,16 +59,29 @@
 </div>
 </body>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="./js/helpers.js"></script>
 <script>
+
+    const XML_SERVER_URL = 'http://localhost:9090';
 
     function formatResult(elm){
         elm.classList.add('resultsSection')
     }
 
     function processMathOperation(){
-        const resultDiv = document.getElementById('operationResult');
-        resultDiv.innerHTML = 'processMathOperation() NOT IMPLEMENTED';
-        formatResult(resultDiv);
+        const callback = (err, data)=> {
+            if(err){console.error(err)}else{console.log(data)};
+            const resultDiv = document.getElementById('operationResult');
+            resultDiv.innerHTML = data;
+            formatResult(resultDiv);
+        };
+        const e = document.getElementById("ddOperation");
+        const op = e.options[e.selectedIndex].value;
+        const strArr = document.getElementById("mathVals").value;
+        const numbers = JSON.parse(`[${strArr}]`);
+        const mathOp = new  MathOp();
+        mathOp.post(op,numbers,XML_SERVER_URL,callback);
     };
 
     function processPing(){
