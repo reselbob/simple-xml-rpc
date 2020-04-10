@@ -85,29 +85,12 @@ const getMathOpXml = (operation, numbers ) =>{
         `</methodCall>`;
     return str;
 };
-/*
-const getChatterXml = (message, limit ) =>{
-    const str = `<?xml version="1.0"?>` +
-        `<methodCall>` +
-        `<methodName>chatter</methodName>` +
-        `<params>` +
-        `<param>` +
-        `<message><string>${message}</string></message>` +
-        `</param>` +
-        `<param>` +
-        `<limit><i4>${limit}</i4></limit>` +
-        `</param>` +
-        `</params>` +
-        `</methodCall>`;
-    return str;
-};
- */
 
 describe('Basic xml-http Tests: ', () => {
     before(function () {
        const {server} = require('../server');
        app = server;
-    })
+    });
 
     after(function () {
         app.httpServer.close();
@@ -196,7 +179,7 @@ describe('Basic xml-http Tests: ', () => {
 
     it('Can POST chatter', function (done) {
         const message = faker.lorem.word(2);
-        const limit = 2;
+        const limit = Math.floor((Math.random() * 100) + 1);;
         const xml = getChatterXml(message, limit);
         const options = {
             method: 'POST',
@@ -235,5 +218,4 @@ describe('Basic xml-http Tests: ', () => {
         req.write( xml );
         req.end();
     })
-
 });
