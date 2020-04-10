@@ -4,7 +4,7 @@
   "description": "A project the demonstrates the fundamentals for developing a xml-rpc server and client",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,9 @@
     "faker": "^4.1.0",
     "jstoxml": "^1.6.5",
     "mocha": "^7.1.1",
-    "nyc": "^15.0.0"
+    "nyc": "^15.0.0",
+    "request": "^2.88.2",
+    "xml-js": "^1.6.11",
+    "xmldom": "^0.3.0"
   }
 }

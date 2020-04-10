@@ -2,10 +2,11 @@ const xmlrpc = require('xmlrpc');
 const util = require('util');
 const { toXML } = require('jstoxml');
 
-class RepeatRequest {
+class ChatterRequest {
     constructor(message, limit, tagName) {
         this.message = message;
         this.limit = limit;
+        this.tagName = 'ChatterRequest';
     }
     serialize (){
         const doc = xmlDoc.createElement(this.tagName);
@@ -17,20 +18,20 @@ class RepeatRequest {
 }
 /*
 // create your custom class
-const RepeatRequest = module.exports = (raw) => {
+const ChatterRequest = module.exports = (raw) => {
     this.raw = raw;
     //xmlrpc.CustomType.call(this, raw);
 };
 */
 // inherit everything
-//util.inherits(RepeatRequest, xmlrpc.CustomType);
+//util.inherits(ChatterRequest, xmlrpc.CustomType);
 
 // set a custom tagName (defaults to 'customType')
-//RepeatRequest.prototype.tagName = 'repeatRequest';
+//ChatterRequest.prototype.tagName = 'repeatRequest';
 
 // optionally, override the serializer
-RepeatRequest.prototype.serialize = function (xml) {
+ChatterRequest.prototype.serialize = function (xml) {
 
 };
 
-module.exports = {RepeatRequest};
+module.exports = {ChatterRequest};

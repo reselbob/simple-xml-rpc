@@ -6,7 +6,7 @@ const describe = require('mocha').describe;
 const it = require('mocha').it;
 const after = require('mocha').after;
 const faker = require('faker');
-const {RepeatRequest} = require("../types/repeat-types");
+const {ChatterRequest} = require("../types/chatter-types");
 
 const XML_RPC_SERVER_PORT = process.env.XML_RPC_SERVER_PORT || 9090;
 
@@ -34,7 +34,7 @@ describe('Basic xml-grpc Tests: ', () => {
 
     it('Can add', function (done) {
         const arr = getRandomArray();
-        const answer = arr.reduce((a, b) => a + b, 0)
+        const answer = arr.reduce((a, b) => a + b, 0);
         client.methodCall(operation.add, arr, function (error, value) {
             expect(value).to.equal(answer);
             done();
@@ -68,11 +68,11 @@ describe('Basic xml-grpc Tests: ', () => {
         })
     });
 
-    it('Can repeat', function (done) {
+    it('Can chatter', function (done) {
         const message = faker.lorem.word(2);
         const limit = 2;
-        const arr = [new RepeatRequest(message, limit)];
-        client.methodCall(operation.repeat, arr, function (error, value) {
+        const arr = [new ChatterRequest(message, limit)];
+        client.methodCall(operation.chatter, arr, function (error, value) {
             expect(value.length).to.equal(limit);
             done();
         })
