@@ -7,9 +7,10 @@ const {SimpleXmlRpcClient} = require('./lib/client');
 
 var argv = require('yargs')
     .usage('Usage: $0 -o [string] - d [array] -m [string] -c 100 [num')
-    .example('$0 -o add -d [4,5.5,6]', 'Sums up the numbers in the array [4, 5.5, 6]')
+    .example('$0 -o add -d [4,5,6,7]', 'Sums up the numbers in the array [[4,5,6,7]]')
     .example('$0 -o chatter -m "I have a secret" -c 100', 'returns the messages, "I have a secret" in an array of 100 messages')
-    .example('$0 -o ping -m I want to see verbose results -v true', 'returns the message, "I want to see verbose result" along with requestXML and responseXML')
+    .example('$0 -o ping -m I want to see verbose results -v', 'returns the message, "I want to see verbose result" along with requestXML and responseXML')
+    .example('$0 -o add -d [1,1,1,1,8] -v', 'Sums up the numbers in the array [[4,5,6,7]] and displays the requestXML and responseXM ')
     .alias('o', 'operation')
     .alias('d', 'data')
     .alias('m', 'message')

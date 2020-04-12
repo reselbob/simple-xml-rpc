@@ -1,6 +1,77 @@
 # simple-xml-rpc
 A project the demonstrates the fundamentals for developing a xml-rpc server and client
 
+## Running the project on Katacoda
+
+You can use the [Katacoda interactive learning environment](katacode.com) run examples of the Simple XML-RPC CLI Tool against the Simple XML-RPC server. To run this project against on Katacoda do the following steps
+
+**Step 1:** Go the Ubuntu playground on Katacoda:
+
+[`https://katacoda.com/courses/ubuntu/playground`](https://katacoda.com/courses/ubuntu/playground)
+
+**Step 2:** In there terminal window execute the following command to clone the project source code from GitHub.
+
+`git clone https://github.com/reselbob/simple-xml-rpc.git`
+
+**Step 3:** Install the server
+
+`cd simple-xml-rpc/server/`
+
+`npm install`
+
+**Step 4:** Start the Simple XML-RPC server
+
+`node server.js`
+
+**Step 5:** Open a new terminal window in Katacoda.
+
+**Step 6:** In the new terminal, navigate to the CLI directory in the source code
+
+`cd simple-xml-rpc/cli/`
+
+**Step 7:** Install the CLI tool global so that it can be used as a command line program
+
+`npm install -g`
+
+**Step 8:** Call the online help documentation
+
+ `xmlrpc -h`
+ 
+You'll get output as follows
+
+```
+
+Usage: xmlrpc -o [string] - d [array] -m [string] -c 100 [num
+
+Options:
+  --version           Show version number                              [boolean]
+  -o, --operation     The operation to perform. Choose from the operations: add,
+                      subtract, multiply, divide, chatter, ping       [required]
+  -d, --data          The array of numbers to process. Used with the operations,
+                      add, subtract, multiply, divide
+  -m, --message       Used with the operation, chatter and ping. The message to
+                      transit.
+  -c, --count         Used with the operation, chatter. Indicates the number of
+                      messages to return in the stream.
+  -h, --host, --help  Show help                 [boolean] [default: "localhost"]
+  -p, --port          The xml-rpc server port.                   [default: 9090]
+  -v, --verbose       Verbose response including requestXML and responseXML
+
+Examples:
+  xmlrpc -o add -d [4,5.5,6]                Sums up the numbers in the array [4,
+                                            5.5, 6]
+  xmlrpc -o chatter -m "I have a secret"    returns the messages, "I have a
+  -c 100                                    secret" in an array of 100 messages
+  xmlrpc -o ping -m I want to see verbose   returns the message, "I want to see
+  results -v                               verbose result" along with
+                                            requestXML and responseXML
+```
+
+**Step 8:** Use the CLI tool to call the `add` method on the Simple XML-RPC server.
+
+`xmlrpc -o add -d [1,1,1,1,8] -v`
+
+**Congratulations!** You're up and running with Simple XML-RPC Server and CLI Tool.
 
 ## Server
 
