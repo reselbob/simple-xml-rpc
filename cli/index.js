@@ -102,7 +102,7 @@ const chatter = (config) => {
 
 const ping = (config) => {
     const callback = (err, response) => {
-        esponse.result.date = new Date();
+        response.result.date = new Date();
         console.log(JSON.stringify(response.result))
     }
     const message  =  config.message;
