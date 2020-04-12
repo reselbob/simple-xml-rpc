@@ -23,6 +23,10 @@ You can use the [Katacoda interactive learning environment](katacode.com) run ex
 
 `node server.js`
 
+You'll get output similar to the following:
+
+`XML-RPC server listening on port 9090 at Sun Apr 12 2020 20:01:03 GMT+0000 (UTC)`
+
 **Step 5:** Open a new terminal window in Katacoda.
 
 **Step 6:** In the new terminal, navigate to the CLI directory in the source code
@@ -70,6 +74,16 @@ Examples:
 **Step 8:** Use the CLI tool to call the `add` method on the Simple XML-RPC server.
 
 `xmlrpc -o add -d [1,1,1,1,8] -v`
+
+You'll get output similar to the following:
+
+```
+{
+"data":12,
+"requestXml":"<?xml version=\"1.0\"?><methodCall><methodName>add</methodName><params><param><value><array><data><value><i4>1</i4></value><value><i4>1</i4></value><value><i4>1</i4></value><value><i4>1</i4></value><value><i4>8</i4></value></data></array></value></param></params></methodCall>",
+"responseXml":"<?xml version=\"1.0\"?><methodResponse><params><param><value><int>12</int></value></param></params></methodResponse>"
+}
+```
 
 **Congratulations!** You're up and running with Simple XML-RPC Server and CLI Tool.
 
