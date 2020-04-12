@@ -31,7 +31,7 @@ var argv = require('yargs')
     .epilog('copyright 2020')
     .argv;
 
-const client = new SimpleXmlRpcClient(SERVER_HOST, PORT, PATH);
+const client = new SimpleXmlRpcClient(SERVER_HOST, SERVER_PORT_PATH, SERVER_PORT_PATH);
 
 const mathCallback = (err, response) => {
     console.log(JSON.stringify(response.result))
@@ -105,7 +105,7 @@ const ping = (config) => {
         esponse.result.date = new Date();
         console.log(JSON.stringify(response.result))
     }
-    const message  =  config.message
+    const message  =  config.message;
     const verbose = config.verbose;
     client.ping({message,verbose}, callback)
 };
