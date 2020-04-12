@@ -86,29 +86,32 @@ class SimpleXmlRpcClient {
     constructor(serverHost, serverPort, serverPath) {
         this.xmlHelper = new XmlHelper();
         this.poster = new Poster(serverHost, serverPort, serverPath);
+        this.postMathOpToServer = (requestXml, config, callback) =>{
+            this.poster.post({requestXml,  verbose: config.verbose, operation: 'mathOp'}, callback);
+        }
     }
 
-    add({numbers,verbose}, callback) {
-       const requestXml = this.xmlHelper.getMathOperationXml(operation.add, numbers);
-       this.poster.post({requestXml, verbose, operation: 'mathOp'}, callback);
+    add(config, callback) {
+       const requestXml = this.xmlHelper.getMathOperationXml(operation.add, config.numbers);
+       this.postMathOpToServer(requestXml, config, callback);
     }
 
-    subtract({numbers,verbose}, callback){
-        const requestXml = this.xmlHelper.getMathOperationXml(operation.subtract, numbers);
-        this.poster.post({requestXml, verbose, operation: 'mathOp'}, callback);
+    subtract(config, callback) {
+        const requestXml = this.xmlHelper.getMathOperationXml(operation.subtract, config.numbers);
+        this.postMathOpToServer(requestXml.config, callback);
     }
-    divide({numbers,verbose}, callback){
-        const requestXml = this.xmlHelper.getMathOperationXml(operation.divide, numbers);
-        this.poster.post({requestXml, verbose, operation: 'mathOp'}, callback);
+    divide(config, callback){
+        const requestXml = this.xmlHelper.getMathOperationXml(operation.divide, config.numbers);
+        this.postMathOpToServer(requestXml, config, callback);
     }
-    multiply({numbers,verbose}, callback){
-        const requestXml = this.xmlHelper.getMathOperationXml(operation.multiply, numbers);
-        this.poster.post({requestXml, verbose, operation: 'mathOp'}, callback);
+    multiply(config, callback){
+        const requestXml = this.xmlHelper.getMathOperationXml(operation.multiply, config.numbers);
+        this.postMathOpToServer(requestXml, config, callback);
     }
 
-    chatter({message, limit, verbose}, callback){
-        const requestXml = this.xmlHelper.getChatterXml(message,limit)
-        this.poster.post({requestXml, verbose, operation: 'chatter'}, callback);
+    chatter(config, callback){
+        const requestXml = this.xmlHelper.getChatterXml(config.message, config.count)
+        this.poster.post({requestXml, verbose: config.verbose, operation: 'chatter'}, callback);
     }
     ping({message, verbose}, callback){
         const requestXml = this.xmlHelper.getPingRequestXml(message);

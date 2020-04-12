@@ -27,7 +27,7 @@ describe('Basic client class Tests: ', () => {
 
     after(function () {
         app.httpServer.close();
-        console.log({message: `xml-grpc server shutdown at ${new Date()}`})
+        console.log({message: `xml=rpc server shutdown at ${new Date()}`})
     });
 
     it('Can POST add', function (done) {

@@ -9,7 +9,14 @@ class SimpleXmlRpcParser {
     }
     parseMathOperation(xml) {
         const result = getJson(xml);
-        return Number(result.methodResponse.params.param.value.double._text)
+        if(result.methodResponse.params.param.value.double){
+            return Number(result.methodResponse.params.param.value.double._text)
+        }
+        if(result.methodResponse.params.param.value.int){
+            return Number(result.methodResponse.params.param.value.int._text)
+        }
+
+        throw new Error("Unknown data type returned")
     }
 
     parsePing(xml) {

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-const SERVER_HOST = process.env.SIMPLE_XML_RPC_HOST | 'localhost';
-const SERVER_PORT = process.env.SIMPLE_XML_RPC_PORT | 9090;
-const SERVER_PORT_PATH = process.env.SIMPLE_XML_RPC_PATH | '/';
+const SERVER_HOST = process.env.SIMPLE_XML_RPC_HOST || 'localhost';
+const SERVER_PORT = process.env.SIMPLE_XML_RPC_PORT || 9090;
+const SERVER_PATH = process.env.SIMPLE_XML_RPC_PATH || '/';
 const {SimpleXmlRpcClient} = require('./lib/client');
 
 
@@ -31,10 +31,10 @@ var argv = require('yargs')
     .epilog('copyright 2020')
     .argv;
 
-const client = new SimpleXmlRpcClient(SERVER_HOST, SERVER_PORT_PATH, SERVER_PORT_PATH);
+const client = new SimpleXmlRpcClient(SERVER_HOST, SERVER_PORT, SERVER_PATH);
 
 const mathCallback = (err, response) => {
-    console.log(JSON.stringify(response.result))
+    console.log(JSON.stringify(response))
 };
 
 const chatterCallback = (err, response) => {
@@ -102,8 +102,8 @@ const chatter = (config) => {
 
 const ping = (config) => {
     const callback = (err, response) => {
-        response.result.date = new Date();
-        console.log(JSON.stringify(response.result))
+        response.date = new Date();
+        console.log(JSON.stringify(response))
     }
     const message  =  config.message;
     const verbose = config.verbose;
@@ -129,10 +129,11 @@ switch (argv.o.toLowerCase()) {
         divide({numbers: argv.d, verbose: argv.v} );
         break;
     case('chatter'):
-        chatter({message: argv.m, verbose: argv.v})
+        chatter({message: argv.m, count: argv.c, verbose: argv.v});
         break;
     case('ping'):
-        ping({message: argv.m, count: argv.c, verbose: argv.v})
+        ping({message: argv.m, count: argv.c, verbose: argv.v});
+        break;
     default:
         console.log(argv.o + ' is an unknown operation')
 }
