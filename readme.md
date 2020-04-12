@@ -83,9 +83,9 @@ You'll get output similar to the following:
 
 ```
 {
-"data":12,
-"requestXml":"<?xml version=\"1.0\"?><methodCall><methodName>add</methodName><params><param><value><array><data><value><i4>1</i4></value><value><i4>1</i4></value><value><i4>1</i4></value><value><i4>1</i4></value><value><i4>8</i4></value></data></array></value></param></params></methodCall>",
-"responseXml":"<?xml version=\"1.0\"?><methodResponse><params><param><value><int>12</int></value></param></params></methodResponse>"
+  "data": 12,
+  "requestXml": "<?xml version=\"1.0\"?><methodCall><methodName>add</methodName><params><param><value><array><data><value><i4>1</i4></value><value><i4>1</i4></value><value><i4>1</i4></value><value><i4>1</i4></value><value><i4>8</i4></value></data></array></value></param></params></methodCall>",
+  "responseXml": "<?xml version=\"1.0\"?><methodResponse><params><param><value><int>12</int></value></param></params></methodResponse>"
 }
 ```
 
