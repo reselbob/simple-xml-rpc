@@ -179,7 +179,7 @@ describe('Basic xml-http Tests: ', () => {
 
     it('Can POST chatter', function (done) {
         const message = faker.lorem.word(2);
-        const limit = Math.floor((Math.random() * 100) + 1);;
+        const limit = Math.floor((Math.random() * 100) + 1);
         const xml = getChatterXml(message, limit);
         const options = {
             method: 'POST',

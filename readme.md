@@ -6,6 +6,6 @@ A project the demonstrates the fundamentals for developing a xml-rpc server and 
 
 You can find the documentation for the Simple XML-RPC server [here](./server/readme.md).
 
-## Client
+## CLI
 
-You can find the documentation for the Simple XML-RPC client [here](./client/readme.md).
+You can find the documentation for the Simple XML-RPC CLI Tool that will allow you to interact with the server [here](./cli/readme.md).

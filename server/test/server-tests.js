@@ -11,13 +11,13 @@ const {ChatterRequest} = require("../types/chatter-types");
 const XML_RPC_SERVER_PORT = process.env.XML_RPC_SERVER_PORT || 9090;
 
 const client = xmlrpc.createClient({ host: 'localhost', port: XML_RPC_SERVER_PORT, path: '/'});
-const ARRAY_LENGTH = 40;
+const ARRAY_LENGTH = 4;
 
 const getRandomArray = () =>{
     return Array.from({length: ARRAY_LENGTH}, () => Math.floor(Math.random() * ARRAY_LENGTH));
 }
 
-describe('Basic xml-grpc Tests: ', () => {
+describe('Basic xml-rpc Tests: ', () => {
     after(function() {
         server.httpServer.close();
         console.log({message:  `xml-grpc server shutdown at ${new Date()}`})
