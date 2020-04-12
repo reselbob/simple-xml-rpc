@@ -4,6 +4,8 @@ const SERVER_PORT = process.env.SIMPLE_XML_RPC_PORT || 9090;
 const SERVER_PATH = process.env.SIMPLE_XML_RPC_PATH || '/';
 const {SimpleXmlRpcClient} = require('./lib/client');
 
+const JSON_SPACE = 2;
+
 
 var argv = require('yargs')
     .usage('Usage: $0 -o [string] - d [array] -m [string] -c 100 [num] -v [verbose]')
@@ -36,11 +38,11 @@ var argv = require('yargs')
 const client = new SimpleXmlRpcClient(SERVER_HOST, SERVER_PORT, SERVER_PATH);
 
 const mathCallback = (err, response) => {
-    console.log(JSON.stringify(response,null, 4))
+    console.log(JSON.stringify(response,null, JSON_SPACE))
 };
 
 const chatterCallback = (err, response) => {
-    console.log(response,null, 4)
+    console.log(response,null, JSON_SPACE)
 };
 
 const argMathError = (op) => {
@@ -105,7 +107,7 @@ const chatter = (config) => {
 const ping = (config) => {
     const callback = (err, response) => {
         response.date = new Date();
-        console.log(JSON.stringify(response,null, 4))
+        console.log(JSON.stringify(response,null, JSON_SPACE))
     }
     const message  =  config.message;
     const verbose = config.verbose;
