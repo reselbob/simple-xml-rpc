@@ -44,8 +44,7 @@ You'll get output similar to the following:
 You'll get output as follows
 
 ```
-
-Usage: xmlrpc -o [string] - d [array] -m [string] -c 100 [num
+Usage: xmlrpc -o [string] - d [array] -m [string] -c 100 [num] -v [verbose]
 
 Options:
   --version           Show version number                              [boolean]
@@ -62,13 +61,18 @@ Options:
   -v, --verbose       Verbose response including requestXML and responseXML
 
 Examples:
-  xmlrpc -o add -d [4,5.5,6]                Sums up the numbers in the array [4,
-                                            5.5, 6]
+  xmlrpc -o add -d [4,5,6,7]                Sums up the numbers in the array
+                                            [[4,5,6,7]]
   xmlrpc -o chatter -m "I have a secret"    returns the messages, "I have a
   -c 100                                    secret" in an array of 100 messages
   xmlrpc -o ping -m I want to see verbose   returns the message, "I want to see
-  results -v                               verbose result" along with
+  results -v                                verbose result" along with
                                             requestXML and responseXML
+  xmlrpc -o add -d [1,1,1,1,8] -v           Sums up the numbers in the array
+                                            [4,5,6,7] and displays the
+                                            requestXML and responseXML
+
+copyright 2020
 ```
 
 **Step 8:** Use the CLI tool to call the `add` method on the Simple XML-RPC server.

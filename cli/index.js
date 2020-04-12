@@ -36,11 +36,11 @@ var argv = require('yargs')
 const client = new SimpleXmlRpcClient(SERVER_HOST, SERVER_PORT, SERVER_PATH);
 
 const mathCallback = (err, response) => {
-    console.log(JSON.stringify(response))
+    console.log(JSON.stringify(response,null, 4))
 };
 
 const chatterCallback = (err, response) => {
-    console.log(response)
+    console.log(response,null, 4)
 };
 
 const argMathError = (op) => {
@@ -105,7 +105,7 @@ const chatter = (config) => {
 const ping = (config) => {
     const callback = (err, response) => {
         response.date = new Date();
-        console.log(JSON.stringify(response))
+        console.log(JSON.stringify(response,null, 4))
     }
     const message  =  config.message;
     const verbose = config.verbose;
