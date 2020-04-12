@@ -29,7 +29,7 @@ class SimpleXmlRpcParser {
         const arr = [];
         result.methodResponse.params.param.value.array.data.value.forEach(item => {
              const message = item.struct.member[0].value.string._text;
-             const count = item.struct.member[1].value.int._text
+             const count = item.struct.member[1].value.int._text;
             arr.push({message, count})
         });
         return arr;

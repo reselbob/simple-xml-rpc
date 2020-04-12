@@ -66,7 +66,7 @@ describe('Basic Client CLI Tests: ', () => {
         const operation = 'chatter';
         const message = faker.lorem.words(4);
         const cnt = 12;
-        shell.exec(`node ${filespec} -o ${operation} -m ${message} -c ${cnt}`);
+        shell.exec(`node ${filespec} -o ${operation} -m ${message} -c ${cnt} -v true`);
         console.log('\n');
         done();
     })
