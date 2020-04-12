@@ -102,7 +102,8 @@ const chatter = (config) => {
 
 const ping = (config) => {
     const callback = (err, response) => {
-        console.log(`I am pinging the message: ${response.result}.`)
+        esponse.result.date = new Date();
+        console.log(JSON.stringify(response.result))
     }
     const message  =  config.message
     const verbose = config.verbose;
