@@ -2,7 +2,7 @@
 const SERVER_HOST = process.env.SIMPLE_XML_RPC_HOST | 'localhost';
 const SERVER_PORT = process.env.SIMPLE_XML_RPC_PORT | 9090;
 const SERVER_PORT_PATH = process.env.SIMPLE_XML_RPC_PATH | '/';
-const {SimpleXmlRpcClient} = require('./lib/parser');
+const {SimpleXmlRpcClient} = require('./lib/client');
 
 
 var argv = require('yargs')
