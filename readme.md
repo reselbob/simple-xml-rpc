@@ -1,5 +1,5 @@
-# simple-xml-rpc
-A project the demonstrates the fundamentals for developing a xml-rpc server and client
+# Simple-XML-RPCS
+A project the demonstrates the fundamentals for developing and useing a xml-rpc server and client.
 
 ## Running the project on Katacoda
 
