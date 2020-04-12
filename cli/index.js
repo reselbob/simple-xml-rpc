@@ -15,6 +15,7 @@ var argv = require('yargs')
     .alias('c', 'count')
     .alias('h', 'host')
     .alias('p', 'port')
+    .alias('v', 'verbose')
     .default('h', SERVER_HOST)
     .default('p', SERVER_PORT)
     .describe('o', 'The operation to perform. Choose from the operations: add, subtract, multiply, divide, chatter, ping')
@@ -23,6 +24,7 @@ var argv = require('yargs')
     .describe('c', 'Used with the operation, chatter. Indicates the number of messages to return in the stream.')
     .describe('h', 'The xml-rpc server host.')
     .describe('p', 'The xml-rpc server port.')
+    .describe('v', 'Verbose response including requestXML and responseXML')
     .demandOption(['o'])
     .help('h')
     .alias('h', 'help')
@@ -62,74 +64,74 @@ const validateArray = (data) => {
     if (Array.isArray(arr)) return arr;
 }
 
-const add = (arg) => {
-    const arr = validateArray(arg);
+const add = (config) => {
+    const arr = validateArray(config.numbers);
     if (!Array.isArray(arr)) {argMathError('add');return;}
-    const numbers = arr;
-    client.add(numbers, mathCallback);
+    client.add({numbers:arr, verbose: config.verbose }, mathCallback);
 };
 
-const subtract = (arg) => {
-    const arr = validateArray(arg);
+const subtract = (config) => {
+    const arr = validateArray(config.numbers);
     if (!Array.isArray(arr)) {argMathError('subtract');return;}
-    const numbers = arr;
-    client.subtract(numbers, mathCallback);
+    client.subtract({numbers:arr, verbose: config.verbose }, mathCallback);
 };
 
-const divide = (arg) => {
-    const arr = validateArray(arg);
+const divide = (config) => {
+    const arr = validateArray(config.numbers);
     if (!Array.isArray(arr)) {argMathError('divide');return;}
-    const numbers = arr;
-    client.divide(numbers, mathCallback);
+    client.divide({numbers:arr, verbose: config.verbose }, mathCallback);
 };
 
-const multiply = (arg) => {
-    const arr = validateArray(arg);
+const multiply = (config) => {
+    const arr = validateArray(config.numbers);
     if (!Array.isArray(arr)){argMathError('multiply');return;}
     const numbers = arr;
-    client.multiply(numbers, mathCallback);
+    client.multiply({numbers:arr, verbose: config.verbose}, mathCallback);
 };
 
-const chatter = (message, count) => {
+const chatter = (config) => {
     const arr = [];
-    if (typeof message !== 'string') arr.push('message');
-    if (typeof count !== 'number') arr.push('count');
+    if (typeof config.message !== 'string') arr.push('message');
+    if (typeof config.count !== 'number') arr.push('count');
     if (arr.length > 0) {argChatterError(arr); return;}
-    client.chatter({message, count}, chatterCallback);
+    const message  =  config.message;
+    const count  =  config.count;
+    const verbose = config.verbose;
+    client.chatter({message, count, verbose}, chatterCallback);
 };
 
-const ping = (message) => {
+const ping = (config) => {
     const callback = (err, response) => {
         console.log(`I am pinging the message: ${response.result}.`)
     }
-    client.ping(message, callback)
+    const message  =  config.message
+    const verbose = config.verbose;
+    client.ping({message,verbose}, callback)
 };
 
 if (typeof argv.o !== 'string') {
     opError();
     return
 }
-;
 
 switch (argv.o.toLowerCase()) {
     case('add'):
-        add(argv.d);
+        add({numbers: argv.d, verbose: argv.v} );
         break;
     case('subtract'):
-        subtract(argv.d);
+        subtract({numbers: argv.d, verbose: argv.v} );
         break;
     case('multiply'):
-        multiply(argv.d);
+        multiply({numbers: argv.d, verbose: argv.v} );
         break;
     case('divide'):
-        divide(argv.d);
+        divide({numbers: argv.d, verbose: argv.v} );
         break;
     case('chatter'):
-        chatter(argv.m, argv.c);
+        chatter({message: argv.m, verbose: argv.v})
         break;
     case('ping'):
-        ping(argv.m);
-        break;
+        ping({message: argv.m, count: argv.c, verbose: argv.v})
     default:
         console.log(argv.o + ' is an unknown operation')
 }
